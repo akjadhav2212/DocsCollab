@@ -9,7 +9,7 @@ const uuidToData = new Map();
 const io = new Server(httpServer, {
     cors: true
  });
- app.use(express.static('public'));
+app.use(express.static('public'));
 
 io.on('connection', socket => {
     socket.on('get-document',id=>{
