@@ -1,11 +1,16 @@
+const express = require('express');
 const { Server }  = require("socket.io");
 const {createServer} = require('http')
 require('dotenv').config();
-const httpServer = createServer();
+
+const app = express();
+const httpServer = createServer(app);
 const uuidToData = new Map();
 const io = new Server(httpServer, {
     cors: true
  });
+ app.use(express.static('public'));
+
 io.on('connection', socket => {
     socket.on('get-document',id=>{
         if(!uuidToData.has(id)){ 
@@ -23,5 +28,4 @@ io.on('connection', socket => {
 
 });
 const port = process.env.PORT || 3000;
-console.log(port);
 httpServer.listen(port,()=>{console.log('server is listening on port',port);});
