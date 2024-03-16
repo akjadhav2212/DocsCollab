@@ -1,7 +1,6 @@
 const { Server }  = require("socket.io");
 const {createServer} = require('http')
-
-
+require('dotenv').config();
 const httpServer = createServer();
 const uuidToData = new Map();
 const io = new Server(httpServer, {
@@ -23,4 +22,6 @@ io.on('connection', socket => {
     })
 
 });
-httpServer.listen(3000,()=>{'server is listening on port 3000'});
+const port = process.env.PORT || 3000;
+console.log(port);
+httpServer.listen(port,()=>{'server is listening on port',port});
