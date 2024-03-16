@@ -23,4 +23,4 @@ io.on('connection', socket => {
     })
 
 });
-httpServer.listen(3000);
+httpServer.listen(3000,()=>{'server is listening on port 3000'});
