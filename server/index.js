@@ -1,6 +1,7 @@
 const express = require('express');
 const { Server }  = require("socket.io");
 const {createServer} = require('http')
+const path = require('path')
 require('dotenv').config();
 
 const app = express();
@@ -9,10 +10,11 @@ const uuidToData = new Map();
 const io = new Server(httpServer, {
     cors: true
  });
+app.use(express.json());
 app.use(express.static('public'));
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+  });
 
 io.on('connection', socket => {
     socket.on('get-document',id=>{
