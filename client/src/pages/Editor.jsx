@@ -5,7 +5,7 @@ export const Editor = ()=>{
     const id = window.location.pathname.split("/")[2]; 
     const quillRef = useRef(null);
     useEffect(()=>{
-        const socket = io("wss://localhost:8000");
+        const socket = io("ws://localhost:8000");
         const quill = new Quill(quillRef.current, {
             theme: 'snow'
         });
