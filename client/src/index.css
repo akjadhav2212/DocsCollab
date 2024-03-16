@@ -1,0 +1,9 @@
+/* In your CSS file */
+@import "quill/dist/quill.snow.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ql-container{
+    height: 64em;
+}
