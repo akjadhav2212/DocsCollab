@@ -11,9 +11,9 @@ const io = new Server(httpServer, {
     cors: true
  });
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('../client/dist/'));
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+    res.sendFile(path.join(__dirname, "../client/dist/", "index.html"));
   });
 
 io.on('connection', socket => {
